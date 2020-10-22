@@ -1,0 +1,100 @@
+unit Unit3;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Data.DB, Data.Win.ADODB;
+
+type
+  TForm3 = class(TForm)
+    Shape1: TShape;
+    Shape2: TShape;
+    Shape3: TShape;
+    Label1: TLabel;
+    Label2: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Button1: TButton;
+    Label3: TLabel;
+    Button2: TButton;
+    RadioButton1: TRadioButton;
+    procedure PENGISIANBIODATA1Click(Sender: TObject);
+    procedure PENCARIANBIODATA1Click(Sender: TObject);
+    procedure KELUAR1Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure RadioButton1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.dfm}
+
+uses DTBS, FIKTI_XIX, Unit4;
+
+procedure TForm3.Button1Click(Sender: TObject);
+begin
+if (edit1.Text= 'admin') and (edit2.Text='admin')
+ then
+ begin
+ showmessage('Login Berhasil');
+ form3.hide;
+ form1.Show;
+ end
+  else
+  showmessage('Username Atau Password anda salah jika belum punya akun silahkan Register !');
+  edit1.Clear;
+  edit2.Clear;
+end;
+
+procedure TForm3.Button2Click(Sender: TObject);
+begin
+form4.show;
+form3.hide;
+end;
+
+procedure TForm3.KELUAR1Click(Sender: TObject);
+begin
+form3.Close;
+end;
+
+procedure TForm3.PENCARIANBIODATA1Click(Sender: TObject);
+begin
+form2.showmodal;
+end;
+
+procedure TForm3.PENGISIANBIODATA1Click(Sender: TObject);
+begin
+form1.showmodal;
+end;
+
+procedure TForm3.RadioButton1Click(Sender: TObject);
+begin
+if radiobutton1.Caption='Tampilkan Password?'
+  then
+  begin
+    radiobutton1.Caption:='Sembunyikan Password?';
+    radiobutton1.checked:=false;
+    edit2.PasswordChar:=#0
+  end
+  else
+  if radiobutton1.Caption='Sembunyikan Password?'
+  then
+  begin
+    radiobutton1.Caption:='Sembunyikan Password?';
+    radiobutton1.Checked:=false;
+    edit2.PasswordChar:='*'
+
+  end;
+end;
+
+end.

@@ -1,0 +1,45 @@
+unit Unit4;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Data.DB, Data.Win.ADODB;
+
+type
+  TForm4 = class(TForm)
+    ADOConnection1: TADOConnection;
+    ADOQuery1: TADOQuery;
+    DataSource1: TDataSource;
+    MainMenu1: TMainMenu;
+    LOGIN1: TMenuItem;
+    KELUAR1: TMenuItem;
+    procedure LOGIN1Click(Sender: TObject);
+    procedure KELUAR1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form4: TForm4;
+
+implementation
+
+{$R *.dfm}
+
+uses Unit3;
+
+procedure TForm4.KELUAR1Click(Sender: TObject);
+begin
+form4.Close;
+end;
+
+procedure TForm4.LOGIN1Click(Sender: TObject);
+begin
+form4.Close;
+form3.show;
+end;
+
+end.
